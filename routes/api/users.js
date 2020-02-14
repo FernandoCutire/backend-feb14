@@ -4,6 +4,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
+const nodemailer = require("nodemailer");
+
 
 // Load input validation
 const validateRegisterInput = require("../../validation/register");
@@ -11,6 +13,15 @@ const validateLoginInput = require("../../validation/login");
 
 // Load User model
 const User = require("../../models/User");
+
+let transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.email, // generated ethereal user
+    pass: process.env.emailKey // generated ethereal password
+  }
+});
+
 
 
 // CRUD
@@ -48,7 +59,15 @@ router.post("/register", (req, res) => {
           newUser.password = hash;
           newUser
             .save()
-            .then(user => res.json(user))
+            .then(user => {res.json(user) 
+              let info = await transporter.sendMail({
+                from: process.env.email, // sender address
+                to: user.email, // list of receivers
+                subject: `Gracias ${user.name} por crear tu correo `, // Subject line
+                text: "Gracias por crear tu correo ", // plain text body
+                html: "<b>Hola</b>" // html body
+              });
+            })
             .catch(err => console.log(err));
         });
       });
