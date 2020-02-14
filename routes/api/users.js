@@ -60,7 +60,7 @@ router.post("/register", (req, res) => {
           newUser
             .save()
             .then(user => {res.json(user) 
-              let info = await transporter.sendMail({
+              let info =  transporter.sendMail({
                 from: process.env.email, // sender address
                 to: user.email, // list of receivers
                 subject: `Gracias ${user.name} por crear tu correo `, // Subject line
