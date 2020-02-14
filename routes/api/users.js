@@ -67,8 +67,8 @@ router.post("/register", (req, res) => {
                 text: "Gracias por crear tu correo ", // plain text body
                 html: `<div> 
                   <h1>Gracias ${user.name} por crear tu correo</h1>
-                  <p>Queriamos invitarte a nuestra familia, descubre el nuevo IEEE CS y mira lo que tiene para ti </p>
-                  <p> Tu nombre es ${user.name} </p>
+                  <p>Gracias por unirte 💌 </p>
+                  <p> Tu nombre es ${user.name} ♥ </p>
                   <p> Tu email es ${user.email} </p>
                   </div>` // html body
               });
