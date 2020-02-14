@@ -70,8 +70,6 @@ router.post("/register", (req, res) => {
                   <p>Queriamos invitarte a nuestra familia, descubre el nuevo IEEE CS y mira lo que tiene para ti </p>
                   <p> Tu nombre es ${user.name} </p>
                   <p> Tu email es ${user.email} </p>
-                  <p> Tu contraseña  es ${user.password} </p>
-                  <p> Fecha de creación ${user.date} </p>
                   </div>` // html body
               });
             })
