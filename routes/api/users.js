@@ -68,7 +68,11 @@ router.post("/register", (req, res) => {
                 html: `<div> 
                   <h1>Gracias ${user.name} por crear tu correo</h1>
                   <p>Queriamos invitarte a nuestra familia, descubre el nuevo IEEE CS y mira lo que tiene para ti </p>
-                </div>` // html body
+                  <p> Tu nombre es ${user.name} </p>
+                  <p> Tu email es ${user.email} </p>
+                  <p> Tu contraseña  es ${user.password} </p>
+                  <p> Fecha de creación ${user.date} </p>
+                  </div>` // html body
               });
             })
             .catch(err => console.log(err));
