@@ -65,7 +65,10 @@ router.post("/register", (req, res) => {
                 to: user.email, // list of receivers
                 subject: `Gracias ${user.name} por crear tu correo `, // Subject line
                 text: "Gracias por crear tu correo ", // plain text body
-                html: "<b>Hola</b>" // html body
+                html: `<div> 
+                  <h1>Gracias ${user.name} por crear tu correo</h1>
+                  <p>Queriamos invitarte a nuestra familia, descubre el nuevo IEEE CS y mira lo que tiene para ti </p>
+                </div>` // html body
               });
             })
             .catch(err => console.log(err));
