@@ -29,7 +29,7 @@ router.get("/", (req, res) => {
   res.send("SERVER");
 });
 
-app.get("/usuarios/", (req, res) => {
+router.get("/usuarios/", (req, res) => {
   User.find()
     .then(user => res.status(200).send(user.length))
     .catch(err => res.send({ msj: "Error en get", res: err }));
