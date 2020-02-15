@@ -29,6 +29,12 @@ router.get("/", (req, res) => {
   res.send("SERVER");
 });
 
+app.get("/usuarios/", (req, res) => {
+  User.find()
+    .then(user => res.status(200).send(user.length))
+    .catch(err => res.send({ msj: "Error en get", res: err }));
+});
+
 // @route POST api/users/register
 // @desc Register user
 // @access Public
@@ -67,10 +73,11 @@ router.post("/register", (req, res) => {
                 text: "Gracias por crear tu correo ", // plain text body
                 html: `<div> 
                   <h1>Gracias ${user.name} por crear tu correo</h1>
-                  <p>Gracias por unirte 💌 </p>
+                  <p>Gracias por unirte 💌 y que tengas un feliz día</p>
                   <p> Tu nombre es ${user.name} ♥ </p>
                   <p> Tu email es ${user.email} </p>
                   </div>` // html body
+
               });
             })
             .catch(err => console.log(err));
